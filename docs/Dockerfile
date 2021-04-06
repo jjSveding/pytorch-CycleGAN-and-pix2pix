@@ -8,6 +8,10 @@ ENV PATH=/miniconda/bin:${PATH}
 RUN conda update -y conda
 
 RUN conda install -y pytorch torchvision -c pytorch
-RUN mkdir /workspace/ && cd /workspace/ && git clone https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git && cd pytorch-CycleGAN-and-pix2pix && pip install -r requirements.txt
+RUN mkdir /workspace/ && cd /workspace/ && git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git && cd pytorch-CycleGAN-and-pix2pix && pip install -r requirements.txt
+
+# Added commands to run training.
+RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
+RUN python train.py --dataroot ./datasets/ horse2zebra --name horse2zebra _cyclegan --model cycle_gan
 
 WORKDIR /workspace
