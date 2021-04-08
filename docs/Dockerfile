@@ -1,17 +1,18 @@
-FROM nvidia/cuda:10.1-base
+FROM nvcr.io/nvidia/pytorch:21.03-py3
 
 RUN apt update && apt install -y wget unzip curl bzip2 git
-RUN curl -LO http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-RUN bash Miniconda3-latest-Linux-x86_64.sh -p /miniconda -b
-RUN rm Miniconda3-latest-Linux-x86_64.sh
-ENV PATH=/miniconda/bin:${PATH}
-RUN conda update -y conda
+#RUN curl -LO http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+#RUN bash Miniconda3-latest-Linux-x86_64.sh -p /miniconda -b
+#RUN rm Miniconda3-latest-Linux-x86_64.sh
+#ENV PATH=/miniconda/bin:${PATH}
+#RUN conda update -y conda
 
-RUN conda install -y pytorch torchvision -c pytorch
+#RUN conda install -y pytorch torchvision -c pytorch
 RUN mkdir /workspace/ && cd /workspace/ && git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git && cd pytorch-CycleGAN-and-pix2pix && pip install -r requirements.txt
 
 # Added commands to run training.
+RUN cd pytorch-CycleGAN-and-pix2pix
 RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-RUN python train.py --dataroot ./datasets/ horse2zebra --name horse2zebra _cyclegan --model cycle_gan
+RUN python3 train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan
 
 WORKDIR /workspace
