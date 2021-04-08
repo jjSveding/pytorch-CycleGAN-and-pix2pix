@@ -16,7 +16,7 @@ RUN git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git && c
 
 # Added commands to run training.
 RUN cd pytorch-CycleGAN-and-pix2pix
-RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-CMD ["python3", "train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan"]
+RUN bash ./pytorch-CycleGAN-and-pix2pix/datasets/download_cyclegan_dataset.sh horse2zebra
+CMD ["python3", "./pytorch-CycleGAN-and-pix2pix/train.py", "--dataroot", "./pytorch-CycleGAN-and-pix2pix/datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan"]
 
 
