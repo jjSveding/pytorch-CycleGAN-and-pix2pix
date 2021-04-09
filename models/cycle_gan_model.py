@@ -1,6 +1,6 @@
 import torch
 import itertools
-from util.pytorch_ssim import SSIM
+#from util.pytorch_ssim import SSIM
 from util.image_pool import ImagePool
 from .base_model import BaseModel
 from . import networks
@@ -89,8 +89,8 @@ class CycleGANModel(BaseModel):
             self.fake_B_pool = ImagePool(opt.pool_size)  # create image buffer to store previously generated images
             # define loss functions
             self.criterionGAN = networks.GANLoss(opt.gan_mode).to(self.device)  # define GAN loss.
-            #self.criterionCycle = torch.nn.L1Loss()
-            self.criterionCycle = SSIM()
+            self.criterionCycle = torch.nn.L1Loss()
+            #self.criterionCycle = SSIM()
             self.criterionIdt = torch.nn.L1Loss()
             # initialize optimizers; schedulers will be automatically created by function <BaseModel.setup>.
             self.optimizer_G = torch.optim.Adam(itertools.chain(self.netG_A.parameters(), self.netG_B.parameters()), lr=opt.lr, betas=(opt.beta1, 0.999))

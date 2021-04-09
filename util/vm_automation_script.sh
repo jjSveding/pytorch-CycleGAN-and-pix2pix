@@ -28,9 +28,5 @@ git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git
 #nvidia-docker run -it -p 8097:8097  cyclegan
 
 
-# Nvidia requirements. #https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html
-#sudo apt install build-essential
-#BASE_URL=https://us.download.nvidia.com/tesla
-#DRIVER_VERSION=450.80.02
-#curl -fSsl -O $BASE_URL/$DRIVER_VERSION/NVIDIA-Linux-x86_64-$DRIVER_VERSION.run
-#sudo sh NVIDIA-Linux-x86_64-$DRIVER_VERSION.run
+# Nvidia requirements. https://www.pugetsystems.com/labs/hpc/Workstation-Setup-for-Docker-with-the-New-NVIDIA-Container-Toolkit-nvidia-docker2-is-deprecated-1568/
+# Step 3) Install NVIDIA Container Toolkit
