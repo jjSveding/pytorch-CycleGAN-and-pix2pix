@@ -22,3 +22,4 @@ RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
 CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan"]
 
 
+#docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
