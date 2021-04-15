@@ -30,3 +30,8 @@ git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git
 
 # Nvidia requirements. https://www.pugetsystems.com/labs/hpc/Workstation-Setup-for-Docker-with-the-New-NVIDIA-Container-Toolkit-nvidia-docker2-is-deprecated-1568/
 # Step 3) Install NVIDIA Container Toolkit
+
+
+
+# bash into container
+#sudo docker exec -it bold_aryabhata /bin/bash
