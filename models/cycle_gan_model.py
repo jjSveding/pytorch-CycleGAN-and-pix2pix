@@ -92,10 +92,12 @@ class CycleGANModel(BaseModel):
             
             if(self.opt.cycle_loss == "l1"):
                 self.criterionCycle = torch.nn.L1Loss()
+                self.criterionIdt = torch.nn.L1Loss()
             else:
                 self.criterionCycle = SSIM()
+                self.criterionIdt = SSIM()
 
-            self.criterionIdt = torch.nn.L1Loss()
+            
             # initialize optimizers; schedulers will be automatically created by function <BaseModel.setup>.
             self.optimizer_G = torch.optim.Adam(itertools.chain(self.netG_A.parameters(), self.netG_B.parameters()), lr=opt.lr, betas=(opt.beta1, 0.999))
             self.optimizer_D = torch.optim.Adam(itertools.chain(self.netD_A.parameters(), self.netD_B.parameters()), lr=opt.lr, betas=(opt.beta1, 0.999))
