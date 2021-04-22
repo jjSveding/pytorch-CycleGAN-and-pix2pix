@@ -19,13 +19,11 @@ sudo chmod 666 /var/run/docker.sock
 git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git
 
 #cd pytorch-CycleGAN-and-pix2pix/docs
-#docker build . -t cyclegan
+#sudo docker build . -t cyclegan
 
 
 # --mount source=myvol,target=/myapp
-#docker run -it -p 8097:8097  cyclegan -v mydata:/workspace
-
-#nvidia-docker run -it -p 8097:8097  cyclegan
+#sudo docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
 
 
 # Nvidia requirements. https://www.pugetsystems.com/labs/hpc/Workstation-Setup-for-Docker-with-the-New-NVIDIA-Container-Toolkit-nvidia-docker2-is-deprecated-1568/
@@ -34,4 +32,4 @@ git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git
 
 
 # bash into container
-#sudo docker exec -it bold_aryabhata /bin/bash
+#sudo docker exec -it cranky_yalow /bin/bash
