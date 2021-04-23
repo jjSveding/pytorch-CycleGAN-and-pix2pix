@@ -27,4 +27,4 @@ WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
 # Money paintings
 RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
-CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan_monet2photo", "--lambda_A", "100", "--lambda_B", "100", "--lambda_identity", "1"]
+CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--lambda_A", "100", "--lambda_B", "100", "--lambda_identity", "1"]
