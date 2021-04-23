@@ -32,4 +32,4 @@ git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git
 
 
 # bash into container
-#sudo docker exec -it cranky_yalow /bin/bash
+#sudo docker exec -it suspicious_leakey /bin/bash

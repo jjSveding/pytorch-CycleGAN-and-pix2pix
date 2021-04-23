@@ -17,14 +17,14 @@ RUN git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git && c
 WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
 # Added commands to run training.
-#RUN cd pytorch-CycleGAN-and-pix2pix
-RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--lambda_A", "1000", "--lambda_B", "1000", "--lambda_identity", "1"]
+
+# Horse to Zebra
+#RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
+#CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--lambda_A", "1000", "--lambda_B", "1000", "--lambda_identity", "1"]
 #python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan --continue_train 
 
-#sudo docker run --gpus all -v results:./workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
+#sudo docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
 
-
-
-
-#python test.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan
+# Money paintings
+RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
+CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan_monet2photo", "--lambda_A", "100", "--lambda_B", "100", "--lambda_identity", "1"]
