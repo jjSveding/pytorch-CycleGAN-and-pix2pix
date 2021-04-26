@@ -90,7 +90,7 @@ class CycleGANModel(BaseModel):
             # define loss functions
             self.criterionGAN = networks.GANLoss(opt.gan_mode).to(self.device)  # define GAN loss.
             
-            if(self.opt.cycle_loss == "l1"):
+            if(self.opt.cycle_loss_func == "l1"):
                 self.criterionCycle = torch.nn.L1Loss()
                 self.criterionIdt = torch.nn.L1Loss()
             else:
