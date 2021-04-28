@@ -20,12 +20,22 @@ WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
 # Horse to Zebra
 RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "ssim"] 
+CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "l1", "--display_id", "0"] 
 #CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--lambda_A", "1000", "--lambda_B", "1000", "--lambda_identity", "1"]
-#python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan --continue_train 
+#python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan --cycle_loss_func ssim --continue_train --epoch_count 58 --display_id 0
 
 #sudo docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
 
-# Money paintings
+# Monet paintings
 #RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
 #CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--lambda_A", "100", "--lambda_B", "100"]
+
+
+
+# Some notes:
+# --display_id 0             To stop the visdom server
+# --cycle_loss_func ssim     To use SSIM instead of l1 loss as Cycle Consistency loss         (, "--cycle_loss_func", "ssim")
+# --continue_train           Continue training from loaded model (Checkpoints)
+
+# Base start training:
+#   python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan
