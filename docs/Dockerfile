@@ -20,8 +20,10 @@ WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
 # Horse to Zebra
 RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "l1", "--display_id", "0"] 
-#CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--lambda_A", "1000", "--lambda_B", "1000", "--lambda_identity", "1"]
+CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "ssim", "--display_id", "0"] 
+
+
+#Manually
 #python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan --cycle_loss_func ssim --continue_train --epoch_count 58 --display_id 0
 
 #sudo docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
