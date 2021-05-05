@@ -16,11 +16,11 @@ RUN git clone https://github.com/jjSveding/pytorch-CycleGAN-and-pix2pix.git && c
 
 WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
-# Added commands to run training.
+# Training
 
 # Horse to Zebra
-RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
-CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "ssim", "--display_id", "0"] 
+#RUN bash ./datasets/download_cyclegan_dataset.sh horse2zebra
+#CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", "horse2zebra_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "ssim", "--display_id", "0"] 
 
 
 #Manually
@@ -29,8 +29,12 @@ CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", 
 #sudo docker run --gpus all -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan
 
 # Monet paintings
-#RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
-#CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--lambda_A", "100", "--lambda_B", "100"]
+RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
+CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "l1", "--display_id", "0"]
+
+
+
+
 
 
 
@@ -41,3 +45,11 @@ CMD ["python3", "./train.py", "--dataroot", "./datasets/horse2zebra", "--name", 
 
 # Base start training:
 #   python3 ./train.py --dataroot ./datasets/horse2zebra --name horse2zebra_cyclegan --model cycle_gan
+
+
+# Base start test
+# python3 test.py --dataroot ./datasets/horse2zebra  --name horse2zebra_cyclegan --model cycle_gan
+
+
+# Start container agian (Starting when container allready stopped. So it can be tested)
+# sudo docker run -ti --gpus all --entrypoint=sh -v results:/workspace/pytorch-CycleGAN-and-pix2pix/checkpoints cyclegan-ssim-run 
