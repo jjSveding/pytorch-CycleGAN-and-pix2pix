@@ -30,7 +30,7 @@ WORKDIR /workspace/pytorch-CycleGAN-and-pix2pix
 
 # Monet paintings
 RUN bash ./datasets/download_cyclegan_dataset.sh monet2photo
-CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "ssim", "--display_id", "0"]
+CMD ["python3", "./train.py", "--dataroot", "./datasets/monet2photo", "--name", "monet2photo_cyclegan", "--model", "cycle_gan", "--cycle_loss_func", "l1", "--display_id", "0"]
 
 
 
